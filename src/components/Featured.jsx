@@ -9,8 +9,8 @@ import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRound
 
 const Container = styled.div`
     flex: 2;
-    -webkit-box-shadow: 1px 1px 11px 2px rgba(0,0,0,0.56); 
-    box-shadow: 1px 1px 11px 2px rgba(0,0,0,0.56);
+    -webkit-box-shadow: 1px 1px 7px 2px rgba(0,0,0,0.52); 
+  box-shadow: 1px 1px 7px 2px rgba(0,0,0,0.52);
     padding: 20px;
 
 `;

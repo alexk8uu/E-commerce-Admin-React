@@ -13,8 +13,8 @@ const data = [
 
 const Container = styled.div`
     flex: 4;
-    -webkit-box-shadow: 1px 1px 11px 2px rgba(0,0,0,0.56); 
-    box-shadow: 1px 1px 11px 2px rgba(0,0,0,0.56);
+    -webkit-box-shadow: 1px 1px 7px 2px rgba(0,0,0,0.52); 
+  box-shadow: 1px 1px 7px 2px rgba(0,0,0,0.52);
     padding: 20px;
     color: gray;
 
@@ -30,11 +30,11 @@ const Title = styled.div`
 
 
 
-const Chart = () => {
+const Chart = ({ aspect, title }) => {
     return (
         <Container>
-            <Title>Ultimos 6 Meses (Ingresos)</Title>
-            <ResponsiveContainer width="100%" aspect={2 / 1}>
+            <Title>{title}</Title>
+            <ResponsiveContainer width="100%" aspect={aspect}>
                 <AreaChart width={730} height={250} data={data}
                     margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                     <defs>

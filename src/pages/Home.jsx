@@ -27,8 +27,8 @@ const ChartsContainer = styled.div`
 `;
 
 const ListContainer = styled.div`
-    -webkit-box-shadow: 1px 1px 11px 2px rgba(0,0,0,0.56); 
-    box-shadow: 1px 1px 11px 2px rgba(0,0,0,0.56);
+    -webkit-box-shadow: 1px 1px 7px 2px rgba(0,0,0,0.52); 
+  box-shadow: 1px 1px 7px 2px rgba(0,0,0,0.52);
     padding: 20px;
     margin: 20px;
 `;
@@ -55,7 +55,7 @@ const Home = () => {
         </WidgetsContainer>
         <ChartsContainer>
           <Featured />
-          <Chart />
+          <Chart aspect={2/1} title={"Ultimos 6 Meses (Ingresos)"}/>
         </ChartsContainer>
         <ListContainer>
           <ListTitle>Ultimas Transacciones</ListTitle>

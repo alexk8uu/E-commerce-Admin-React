@@ -11,7 +11,7 @@ import img from "../utils/2.jpg"
 
 const Container = styled.div`
     height: 50px;
-    border-bottom: 0.5px solid rgb(231,328,228);
+    border-bottom: 0.5px solid rgba(230,227,227);;
     display: flex;
     align-items: center;
     font-size: 14px;

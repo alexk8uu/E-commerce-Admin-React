@@ -11,8 +11,8 @@ const Container = styled.div`
   flex: 1;
   padding: 10px;
   justify-content: space-between;
-  -webkit-box-shadow: 1px 1px 11px 2px rgba(0,0,0,0.56); 
-  box-shadow: 1px 1px 11px 2px rgba(0,0,0,0.56);
+  -webkit-box-shadow: 1px 1px 7px 2px rgba(0,0,0,0.52); 
+  box-shadow: 1px 1px 7px 2px rgba(0,0,0,0.52);
   border-radius: 10px;
   height: 100px;
 `;

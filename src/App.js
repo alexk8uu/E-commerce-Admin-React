@@ -8,6 +8,7 @@ import List from "./pages/List";
 import Login from "./pages/Login";
 import New from "./pages/New";
 import Single from "./pages/Single";
+import {productInputs, userInputs } from './datatablesource'
 
 
 function App() {
@@ -21,12 +22,12 @@ function App() {
             <Route path="users">
               <Route index element={<List />} />
               <Route path=":userId" element={<Single />} />
-              <Route path="new" element={<New />} />
+              <Route path="new" element={<New  inputs={userInputs} text='Añadir Nuevo Usuario'/>} />
             </Route>
             <Route path="products">
               <Route index element={<List/>}/>
               <Route path=":productId" element={<Single/>}/>
-              <Route path="new" element={<New/>}/>
+              <Route path="new" element={<New inputs={productInputs} text='Añadir Nuevo Producto'/>}/>
             </Route>
           </Route>
         </Routes>
