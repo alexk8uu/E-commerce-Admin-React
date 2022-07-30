@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../datatablesource";
+/* import { userColumns, userRows } from "../datatablesource"; */
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -83,8 +83,8 @@ const Text = styled.h1`
   font-size: 12px;
   margin-right: 5px;
 `;
+const Datatable = ({ userRows, userColumns }) => {
 
-const Datatable = () => {
   return (
     <Container>
       <DatatableTitle>

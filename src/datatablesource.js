@@ -21,7 +21,7 @@ object-fit: cover;
 const StatusContainer = styled.div`
     padding: 5px;
     border-radius: 5px;
-
+/* 
     &.active {
         background-color: rgba(0,128,0,0.5);
         color: green;
@@ -34,13 +34,15 @@ const StatusContainer = styled.div`
     &.passive {
         background-color: rgba(255, 0, 0, 0.5);
         color: crimson;
-    }
+    } */
+    background-color: ${props => props.isAdmin ? 'rgba(0,128,0,0.5)' : 'rgba(255,0,0,0.5)'};
+    color: ${props => props.isAdmin ? 'green' : 'crimson'};
 `;
 
 
 
 export const userColumns = [
-    { field: "id", headerName: "ID", width: 70 },
+    { field: "id", headerName: "ID", width: 100},
     {
         field: "user",
         headerName: "User",
@@ -55,15 +57,17 @@ export const userColumns = [
         }
     },
     { field: "email", headerName: "Email", width: 240 },
-    { field: "age", headerName: "Age", width: 100 },
+    { field: "created", headerName: "Created", width: 200 },
     {
-        field: "status",
-        headerName: "Status",
+        field: "isAdmin",
+        headerName: "Admin",
         width: 160,
         renderCell: (params) => {
+
+          console.log(params)
             return (
-                <StatusContainer className={`StatusContainer ${params.row.status}`}>
-                    {params.row.status}
+                <StatusContainer isAdmin={params.row.isAdmin}>
+                    {`${params.row.isAdmin}`}
                 </StatusContainer>
             )
         }
@@ -91,9 +95,9 @@ export const userRows = [
         id: 1,
         username: "Snow",
         img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-        status: "active",
+        isAdmin: false,
         email: "1snow@gmail.com",
-        age: 35,
+        created: "2022-07-12T20:32:52.607Z" 
     },
     {
         id: 2,
