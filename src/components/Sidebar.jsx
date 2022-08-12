@@ -14,6 +14,8 @@ import {
   LogoutOutlined,
   SettingsOutlined,
 } from "@mui/icons-material";
+import { useDispatch } from 'react-redux';
+import { logout } from "../redux/userRedux";
 
 const Container = styled.div`
   flex: 1;
@@ -107,6 +109,14 @@ const StyledLink = styled(Link)`
 `;
 
 const Sidebar = () => {
+
+
+  const dispatch = useDispatch()
+
+  const handleLogout = () => {
+    dispatch(logout());
+  }
+
   return (
     <Container>
       <Top>
@@ -173,7 +183,7 @@ const Sidebar = () => {
             <AccountCircleOutlined color="secondary" fontSize="Small" />
             <ListText>Perfil</ListText>
           </List>
-          <List>
+          <List onClick={handleLogout}>
             <LogoutOutlined color="secondary" fontSize="Small" />
             <ListText>Salir</ListText>
           </List>

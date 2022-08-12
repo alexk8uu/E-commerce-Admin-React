@@ -5,42 +5,24 @@ import Login from "./pages/Login.jsx";
 import New from "./pages/New";
 import Single from "./pages/Single";
 import { productInputs, userInputs } from "./datatablesource";
+import { useSelector } from "react-redux";
 
 function App() {
-  const admin = JSON.parse(
-    JSON.parse(localStorage.getItem("persist:root"))?.user
-  ).currentUser.isAdmin;
+  const admin = useSelector((state) => state.user.currentUser);
+
+  console.log("ESTO ES ADMIN", admin);
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/">
-            <Route index element={<Home />} />
-            <Route
-              path="login"
-              element={admin ? <Navigate to="/" /> : <Login />}
-            />
-            <Route path="users">
-              <Route index element={<List />} />
-              <Route path=":userId" element={<Single />} />
-              <Route
-                path="new"
-                element={
-                  <New inputs={userInputs} text="Añadir Nuevo Usuario" />
-                }
-              />
-            </Route>
-            <Route path="products">
-              <Route index element={<List />} />
-              <Route path=":productId" element={<Single />} />
-              <Route
-                path="new"
-                element={
-                  <New inputs={productInputs} text="Añadir Nuevo Producto" />
-                }
-              />
-            </Route>
-          </Route>
+          <Route path="/" element={admin ? <Home /> : <Navigate to='/login'/>} />
+          <Route path="/login" element={ admin ? <Navigate to='/'/> : <Login/>} />
+          <Route path="/users" element={<List />} />
+          <Route path="/users/:userId" element={<Single />} />
+          <Route path="/users/new" element={<New inputs={userInputs} text="Añadir Nuevo Usuario" />} />
+          <Route path="/products" element={<List />} />
+          <Route path="/products/:productId" element={<Single />} />
+          <Route path="/products/new" element={<New inputs={productInputs} text="Añadir Nuevo Producto" />} />
         </Routes>
       </BrowserRouter>
     </div>

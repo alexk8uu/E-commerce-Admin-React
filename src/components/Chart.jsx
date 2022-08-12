@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { XAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
-
+/* 
 const data = [
    { name: "Enero", Total: 1200 },
    { name: "Febrero", Total: 2400 },
@@ -10,7 +10,7 @@ const data = [
    { name: "Junio", Total: 2000 },
 ];
 
-
+ */
 const Container = styled.div`
     flex: 4;
     -webkit-box-shadow: 1px 1px 7px 2px rgba(0,0,0,0.52); 
@@ -30,7 +30,7 @@ const Title = styled.div`
 
 
 
-const Chart = ({ aspect, title }) => {
+const Chart = ({ aspect, title, data }) => {
     return (
         <Container>
             <Title>{title}</Title>

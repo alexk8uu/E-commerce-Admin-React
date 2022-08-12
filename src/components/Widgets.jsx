@@ -58,7 +58,7 @@ const ContainerIcon = styled.div`
   
 `;
 
-const Widgets = ({ type }) => {
+const Widgets = ({ type , orders}) => {
 
   let data;
 
@@ -82,6 +82,7 @@ const Widgets = ({ type }) => {
     };
   } else if (type === "orders") {
     data = {
+      orders,
       title: "ORDENES",
       isMoney: false,
       link: "Ver todas las ordenes",
@@ -127,7 +128,7 @@ const Widgets = ({ type }) => {
     <Container>
       <Left>
         <UserTitle>{data.title}</UserTitle>
-        <Counter>{data.isMoney && "$"} {amount}</Counter>
+        <Counter>{data.isMoney && "$"} {data.orders ? data.orders : amount }</Counter>
         <UserLink>{data.link}</UserLink>
       </Left>
       <Right>
