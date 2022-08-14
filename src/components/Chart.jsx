@@ -30,7 +30,7 @@ const Title = styled.div`
 
 
 
-const Chart = ({ aspect, title, data }) => {
+const Chart = ({ aspect, title, data, dataKey }) => {
     return (
         <Container>
             <Title>{title}</Title>
@@ -48,7 +48,7 @@ const Chart = ({ aspect, title, data }) => {
                     <Tooltip />
                     <Area 
                     type="monotone" 
-                    dataKey="Total" 
+                    dataKey={dataKey} 
                     stroke="#8884d8" 
                     fillOpacity={1} 
                     fill="url(#Total)" 

@@ -77,8 +77,8 @@ const ResultAmount = styled.div``;
 const Featured = ({ data, porc }) => {
   let amount = true;
 
-  console.log("DAta que llega a featured", data);
-  console.log("DAta que llega a porc", porc);
+/*   console.log("DAta que llega a featured", data);
+  console.log("DAta que llega a porc", porc); */
 
   return (
     <Container>

@@ -59,10 +59,10 @@ const Home = () => {
     ],
     []
   );
-  const [porc ,setPorc ] = useState(0);
-  const [userStats, setUserStats ] = useState([])
+  const [porc, setPorc] = useState(0);
+  const [userStats, setUserStats] = useState([]);
   const [orders, setOrders] = useState([]);
-  const [incomeOrdes, setIncomeOrders ] = useState([])
+  const [incomeOrdes, setIncomeOrders] = useState([]);
   const [ordersTotal, setOrdersTotal] = useState(0);
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const Home = () => {
       try {
         const res = await userRequest.get("orders");
         setOrders(res.data);
-        setOrdersTotal(res.data.length)
+        setOrdersTotal(res.data.length);
       } catch (error) {
         console.log(error);
       }
@@ -78,10 +78,14 @@ const Home = () => {
     const getIncomeOrders = async () => {
       try {
         const res = await userRequest.get("orders/income");
-        setIncomeOrders(res.data);
-        setPorc((res.data[1].total * 100 / 50000  ))
+        const list = res.data.sort((a,b) => {
+          return a._id - b._id
+        })
+        console.log(list)
+        setIncomeOrders(list);
+        setPorc((list[1].total * 100) / 50000);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     };
     getOrders();
@@ -92,22 +96,25 @@ const Home = () => {
     const getStats = async () => {
       try {
         const res = await userRequest("users/stats");
-        res.data.map((item) => {
+        const list = res.data.sort((a,b) => {
+          return a._id - b._id
+        })
+        list.map((item) => {
           return setUserStats((prev) => [
             ...prev,
-            {name: MONTHS[item._id -1 ], "Total": item.total}
-          ])
-        })
+            { name: MONTHS[item._id - 1], Total: item.total },
+          ]);
+        });
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     };
+    console.log(userStats)
     getStats();
-  },[MONTHS])
+  }, [MONTHS]);
 
-  
-  console.log("Estas son las users que llegan", userStats);
-  console.log("Estas son las ordenes que llegan", orders);
+  /*   console.log("Estas son las users que llegan", userStats);
+  console.log("Estas son las ordenes que llegan", orders); */
 
   return (
     <Container>
@@ -116,13 +123,18 @@ const Home = () => {
         <Navbar />
         <WidgetsContainer>
           <Widgets type="user" />
-          <Widgets type="orders" orders={ordersTotal}  />
+          <Widgets type="orders" orders={ordersTotal} />
           <Widgets type="earning" />
           <Widgets type="balance" />
         </WidgetsContainer>
         <ChartsContainer>
-          <Featured data={incomeOrdes} porc={porc}/>
-          <Chart aspect={2 / 1} title={"Ultimos 6 Meses (Ingresos)"} data={userStats}/>
+          <Featured data={incomeOrdes} porc={porc} />
+          <Chart
+            aspect={2 / 1}
+            title={"Resumen de usuarios registrados"}
+            data={userStats}
+            dataKey="Total"
+          />
         </ChartsContainer>
         <ListContainer>
           <ListTitle>Ultimas Transacciones</ListTitle>
